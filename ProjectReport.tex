@@ -109,15 +109,45 @@ The system is divided into two main parts, software and hardware. The software w
 In the block diagram seen in \figref{blockdiagram} there are three main components that interact with the system, the bus station which contains the readers and the antennas, the front-end that consists of the students interface and the administrators panel, the last component is the bus that is tagged with an RFID tag. All these components are linked together and processed in the server. The server contains the software that will be described in details in the next section.
 \begin{figure}
 \centering
-\fbox{\includegraphics{blockdiagram/hardware.png}}
+\fbox{\includegraphics[scale=0.9]{blockdiagram/hardware.png}}
 \caption{The block diagram of the system}
 \label{blockdiagram}
 \end{figure}
+%
 \subsection{Software architecture}
-
+The software part is divided into three main parts as shown in \figref{blockdiagram} in the local area network tear, these three main parts are:
+\begin{itemize}
+\item
+Back-end logic.
+\item
+The database.
+\item
+Web server.
+\end{itemize}
+The back-end contains a C\# code that the team developed. This code will communicate with the reader to check the busses available at each station and it will write these information in a database. The web server will communicate with the database to get the latest information and it will update the front-end interface without the need to refresh the page by the user. The database is constructed of the following tables:
+\begin{itemize}
+\item
+Bus.
+\item
+Path.
+\item
+Line.
+\item
+Station.
+\item
+Log.
+\end{itemize}
+The entity model shown in \figref{entity} shows the database structure and the attributes for each entity.
+\begin{figure}
+\centering
+\fbox{\includegraphics[scale=1.2]{blockdiagram/entity.png}}
+\caption{The entity model of the database}
+\label{entity}
+\end{figure}
 
 
 \section{Methodology}
+
 
 \subsection{Hardware}
 %add subsections here to place the test results
