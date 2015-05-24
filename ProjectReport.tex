@@ -42,7 +42,7 @@
         Omar Amin\\
         201073280
 \and
-        Ahmad Bajobair\\
+        Ahmed Bajubair\\
         201152850
 \and
         Mahdi Sahel\\
@@ -69,11 +69,11 @@ Put the text of your abstract here.
 
 \section{Problem}
 The main transportation method in KFUPM is the bus system that is supervised and ran by the transportation department. The problem with the system depends on the knowledge of the student about the timing of the busses movements and when busses are located in any station. If a small delay or error happens in the system it will affect all the time schedule and the flow of the busses. This error is most likely to occur and can not be prevented. The problem with the students is that they will not be able to identify when a delay occurs and wither a bus is available or not.
-%
+%%%%%%%
 
 \section{Solution}
 The solution proposed in this project is to provide a monitoring system for both the student and the administrators. Where students can access a website to check for busses and their availability, as will as the administrators who can view the tracking results and evaluate the efficiency of the system.
-
+%
 \subsection{Requirements}
 In order for the project to fulfill the needs it must sustain the following requirements:
 \begin{itemize}
@@ -87,8 +87,10 @@ Detect busses on the run without the need to stop.
 Users can interact with the system and submit complaints.
 \item
 Administrators can access the system to evaluate the efficiency.
+\item
+Ability to accommodate multiple lines.
 \end{itemize}
-
+%
 \subsection{Specifications}
 In order to make these requirements feasible the project has to implement the following specifications:
 \begin{itemize}
@@ -99,12 +101,18 @@ Install RFID reader and antenna at each bus station.
 \item
 Develop web based application that connects to the readers and fitch data and displays them.
 \end{itemize}
-%
+%%%%%
 
 \section{Project Design}
-
+The system is divided into two main parts, software and hardware. The software will contain the database, the communication with the reader as part of the back-end and the front-end which is the website of the service. The hardware consists mainly from the reader and the antennas as well as the tags attached to each bus. In \figref{blockdiagram} the block diagram shows how the software and hardware components work together.
 \subsection{Block diagram}
-
+In the block diagram seen in \figref{blockdiagram} there are three main components that interact with the system, the bus station which contains the readers and the antennas, the front-end that consists of the students interface and the administrators panel, the last component is the bus that is tagged with an RFID tag. All these components are linked together and processed in the server. The server contains the software that will be described in details in the next section.
+\begin{figure}
+\centering
+\fbox{\includegraphics{blockdiagram/hardware.png}}
+\caption{The block diagram of the system}
+\label{blockdiagram}
+\end{figure}
 \subsection{Software architecture}
 
 
@@ -135,7 +143,7 @@ Develop web based application that connects to the readers and fitch data and di
 
 
 %this is the figure codes
-
+% 
 % \begin{figure}
 % \centering
 % \fbox{\includegraphics{c:/users/mosab/desktop/capture.png}}
