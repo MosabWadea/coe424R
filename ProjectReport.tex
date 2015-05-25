@@ -22,7 +22,7 @@
 % 1.0  07Nov95  Created.
 %%----------------------------------------------------------------------
  
-\documentclass[a4paper,twoside]{article}
+\documentclass[a4paper,twoside]{IEEEtran}
 
 
 \usepackage[%
@@ -31,6 +31,14 @@
         %       PStimes,%
         ]{ieeepes}
 
+
+\usepackage{filecontents}
+\begin{filecontents*}{bib.bib}
+
+@REPORT{1,author={Mustafa S. Al-Ghafli},title={{Programming sirit 610 notes}}, year={2012}}
+@REPORT{2,author={Yazan Hlayel, Mohammad Makkawi, Rami Rustom, Turki Al-Mutawa},title={{Handicapped Parking Project for COE 424}}, year14
+
+\end{filecontents*}
 
 
 \title{Bus Tracking and Monitoring System Using RFID Technology}
@@ -48,6 +56,9 @@
         Mahdi Sahel\\
         201152070
 }
+
+
+\usepackage{Pgfplots}
 
 
 \usepackage{graphicx}
@@ -188,34 +199,68 @@ A selection of appropriate hardware was made to match all the requirements of th
 \label{sirireader}
 \end{figure}
 \subsubsection{Sirit RFID reader}
-The sirit RFID reader has three interfacing methods: by GPIO, Serial and by network connection. This project will use the network approach since the bus stations are going to be located remotely and the most reliable way is by ethernet connection. This reader has a documentation that was used. The device can be configured to read from different antennas and it can return the number of antenna that detected a tag and the tag ID. In \figref{sirireader} it is shown the reader and three antennas that were connected to it. 
+The sirit RFID reader has three interfacing methods: by GPIO, Serial and by network connection. This project will use the network approach since the bus stations are going to be located remotely and the most reliable way is by ethernet connection. This reader has a documentation \cite{1} that was used. The device can be configured to read from different antennas and it can return the number of antenna that detected a tag and the tag ID. In \figref{sirireader} it is shown the reader and three antennas that were connected to it. 
 \subsubsection{RFID antenna}
 The antenna used can work with power up to 300 watt and they are sensitive to the orientation. Some tests were made to find the optimum power and orientation of the antenna, and they are as follows:
 \begin{description}
 \item[Test1] 
-this test was made with the antenna places on a height of 1.1 meter and oriented vertically, the distance between the tag and the antenna is 2.5 meters. the readings in \tabref{read1} were collected in read time of 300 ms.
-\begin{table}[ht]
+this test was made with the antenna places on a height of 1.1 meter and oriented vertically, the distance between the tag and the antenna is 2.5 meters. the readings in \figref{read1} were collected in read time of 300 ms.
+\begin{figure}[h]
+\centering
+\fbox{
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Reading freq},
+    ylabel={Power level},
+    xmin=0, xmax=50,
+    ymin=275, ymax=300,
+    xtick={0,10,20,30,40,45,50},
+    ytick={275,280,285,290,295,300},
+    ymajorgrids=true,
+    grid style=dashed
+]
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (48,300)(48,290)(44,285)(4,283)(0,280)
+    };
+\end{axis}
+\end{tikzpicture}}
 \caption{Results for test 1}
 \label{read1}
-\centering
-\begin{tabular}{|1|1|1|1|1|1|}
-\hline
-Power level  & 300 & 290 & 285 & 283 & 280\\ \hline
-Reading freq & 48  & 48  & 44  & 4   & 0\\   \hline
-\end{tabular}
-\end{table}
+\end{figure}
 \item[Test2] 
-this test was made with the antenna places on a height of 2.1 meter and oriented horizontally, the distance between the tag and the antenna is 2.5 meters. the readings in \tabref{read2} were collected in read time of 300 ms.
-\begin{table}[ht]
+this test was made with the antenna places on a height of 2.1 meter and oriented horizontally, the distance between the tag and the antenna is 2.5 meters. the readings in \figref{read2} were collected in read time of 300 ms.
+\begin{figure}[h]
+\centering
+\fbox{
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Reading freq},
+    ylabel={Power level},
+    xmin=0, xmax=50,
+    ymin=280, ymax=300,
+    xtick={50,45,40,30,20,10,0},
+    ytick={280,285,290,295,300},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+ 
+\addplot[
+    color=red,
+    mark=square,
+    ]
+    coordinates {
+    (48,300)(48,290)(0,288)
+    };
+\end{axis}
+\end{tikzpicture}}
 \caption{Results for test 2}
 \label{read2}
-\centering
-\begin{tabular}{|1|1|1|1|}
-\hline
-Power level  & 300 & 290 & 288 \\ \hline
-Reading freq & 48  & 48  & 0  \\   \hline
-\end{tabular}
-\end{table}
+\end{figure}
+
 \end{description}
 These tests shows that there will be huge drop in reading efficiency when the power goes below 280, but it will be approximately the same from 290 to 300. Therefor the power setting for the antenna is going to be 290 watt with horizontal orientation since this orientation allowed the antenna to be higher, and this is useful since the antenna must be placed over the bus stations. \figref{antenna} shows the antenna and how they are oriented.
 \begin{figure}[h]
@@ -225,7 +270,20 @@ These tests shows that there will be huge drop in reading efficiency when the po
 \label{antenna}
 \end{figure}
 \subsubsection{RFID tags}
-The tags used are normal passive tags with programmable UID. The system will assign a tag to each bus and it will link the tag number with the bus number in the database. In \figref{tag} a sample of the tag used. This tag can handle the rough environment conditions such as high temperature, dust and collisions.
+The tags used are passive ultra high frequency (UHF) tags with programmable UID. The system will assign a tag to each bus and it will link the tag number with the bus number in the database. In \figref{tag} a sample of the tag used. This tag can handle the rough environment conditions such as high temperature, dust and collisions.
+The specifications of this kind of tags are\cite{2}:
+\begin{itemize}
+\item
+UHF tag (865-928) MHz.
+\item
+64 Bytes memory.
+\item
+Works in high temperature.
+\item
+Orientation-independent.
+\item
+Works with/around metal.
+\end{itemize}
 \begin{figure}[h]
 \centering
 \fbox{\includegraphics[scale=0.8]{img/20150429_120113_edited.jpg}}
@@ -313,24 +371,12 @@ a
 
 
 
-%here is the table code
- 
-% \begin{table}
-% \caption{This is the caption for table \#1. Make sure it goes
-% \emph{before} the table!}
-% \label{table1}
-% \centering
-% table matter
-% \end{table}
+
+%See \cite{893287} for more info 
 
 
-
-
-\bibliographystyle{IEEEtran}
-
-\begin{journals}
-\bibitem{siritnotes} Mustafa S. Al-Ghafli {\em Programming sirit 610 notes} 2012.
-\end{journals}
+\bibliographystyle{ieeetran}
+\bibliography{bib}
 
 
 \end{document}

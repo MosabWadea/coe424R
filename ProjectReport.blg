@@ -4,19 +4,28 @@ Release version: 3.71 (18 Aug 1996)
 
 The top-level auxiliary file: ProjectReport.aux
 The style file: ieeepes.bst
-I couldn't open database file FilenameOfYourBibliography.bib
----line 3 of file ProjectReport.aux
- : \bibdata{FilenameOfYourBibliography
- :                                    }
+Illegal, another \bibstyle command---line 34 of file ProjectReport.aux
+ : \bibstyle
+ :          {ieeetran}
 I'm skipping whatever remains of this command
-I found no \citation commands---while reading file ProjectReport.aux
-I found no database files---while reading file ProjectReport.aux
+Database file #1: bib.bib
+Warning--entry type for "1" isn't style-file defined
+--line 2 of file bib.bib
+Warning--entry type for "2" isn't style-file defined
+--line 3 of file bib.bib
+ Illegal end of database file---line 6 of file bib.bib
+ : 
+ : 
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "Yazan Hlayel, Mohammad Makkawi, Rami Rustom, Turki Al-Mutawa" for entry 2
+while executing---line 1005 of file ieeepes.bst
 
 Here's how much of BibTeX's memory you used:
- Cites:                 0 out of 7500
- Fields:           125000 out of 125000
- Hash table:        34877 out of 35000
- Strings:             458 out of 30000
- String pool:        3694 out of 750000
+ Cites:                 2 out of 7500
+ Fields:               35 out of 125000
+ Hash table:        34873 out of 35000
+ Strings:             463 out of 30000
+ String pool:        3825 out of 750000
  Wizard functions:   1821 out of 10000
 (There were 3 error messages)
