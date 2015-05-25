@@ -75,6 +75,7 @@ keywordstyle=\color{bluekeywords},
 stringstyle=\color{redstrings},
 basicstyle=\ttfamily\small,
 }
+\usepackage{varioref}
 
 \begin{document}
 
@@ -180,8 +181,49 @@ The system is divided into two main parts, software and hardware. The software w
 %%%%%%
 \subsection{Hardware}
 A selection of appropriate hardware was made to match all the requirements of the project, here is a brief description for each hardware part and how it is tested and implemented:
+\begin{figure}[h]
+\centering
+\fbox{\includegraphics[scale=0.055]{img/img_20150515_172325.jpg}}
+\caption{The sirit RFID reader and the antennas connected}
+\label{sirireader}
+\end{figure}
 \subsubsection{Sirit RFID reader}
+The sirit RFID reader has three interfacing methods: by GPIO, Serial and by network connection. This project will use the network approach since the bus stations are going to be located remotely and the most reliable way is by ethernet connection. This reader has a documentation that was used. The device can be configured to read from different antennas and it can return the number of antenna that detected a tag and the tag ID. In \figref{sirireader} it is shown the reader and three antennas that were connected to it. 
 \subsubsection{RFID antenna}
+The antenna used can work with power up to 300 watt and they are sensitive to the orientation. Some tests were made to find the optimum power and orientation of the antenna, and they are as follows:
+\begin{description}
+\item[Test1] 
+this test was made with the antenna places on a height of 1.1 meter and oriented vertically, the distance between the tag and the antenna is 2.5 meters. the readings in \tabref{read1} were collected in read time of 300 ms.
+\begin{table}[ht]
+\caption{Results for test 1}
+\label{read1}
+\centering
+\begin{tabular}{|1|1|1|1|1|1|}
+\hline
+Power level  & 300 & 290 & 285 & 283 & 280\\ \hline
+Reading freq & 48  & 48  & 44  & 4   & 0\\   \hline
+\end{tabular}
+\end{table}
+\item[Test2] 
+this test was made with the antenna places on a height of 2.1 meter and oriented horizontally, the distance between the tag and the antenna is 2.5 meters. the readings in \tabref{read2} were collected in read time of 300 ms.
+\begin{table}[ht]
+\caption{Results for test 2}
+\label{read2}
+\centering
+\begin{tabular}{|1|1|1|1|}
+\hline
+Power level  & 300 & 290 & 288 \\ \hline
+Reading freq & 48  & 48  & 0  \\   \hline
+\end{tabular}
+\end{table}
+\end{description}
+These tests shows that there will be huge drop in reading efficiency when the power goes below 280, but it will be approximately the same from 290 to 300. Therefor the power setting for the antenna is going to be 290 watt with horizontal orientation since this orientation allowed the antenna to be higher, and this is useful since the antenna must be placed over the bus stations. \figref{antenna} shows the antenna and how they are oriented.
+\begin{figure}[h]
+\centering
+\fbox{\includegraphics[scale=0.2]{img/img_20150515_172358.jpg}}
+\caption{Antenna oriented horizontally}
+\label{antenna}
+\end{figure}
 \subsubsection{RFID tags}
 %%%%%
 \subsection{Software}
@@ -264,17 +306,6 @@ a
 
 
 
-
-
-%this is the figure codes
-% 
-% \begin{figure}
-% \centering
-% \fbox{\includegraphics{c:/users/mosab/desktop/capture.png}}
-% \caption{This is the caption for figure \#1.}
-% \label{figure1}
-% \end{figure}
-
 %here is the table code
  
 % \begin{table}
@@ -285,13 +316,16 @@ a
 % table matter
 % \end{table}
 
-%here is the refrencing codes
-
-% Figure and table references: \figref{figure1}, \tabref{table1}. Use
-% these at the beginning and within a sentence.
 
 
+
+\bibliographystyle{IEEEtran}
+
+\begin{journals}
+\bibitem{siritnotes} Mustafa S. Al-Ghafli {\em Programming sirit 610 notes} 2012.
+\end{journals}
 
 
 \end{document}
+
 
