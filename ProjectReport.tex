@@ -1,3 +1,4 @@
+%
 
 %%----------------------------------------------------------------------
  
@@ -16,6 +17,8 @@
 
 @REPORT{1,author={Mustafa S. Al-Ghafli},title={{Programming sirit 610 notes}}, year={2012}}
 @REPORT{2,author={Yazan Hlayel, Mohammad Makkawi, Rami Rustom, Turki Al-Mutawa},title={{Handicapped Parking Project for COE 424}}, year={2014}}
+@REPORT{3,author={Real-time locating system},title={{https://en.wikipedia.org/wiki/Real-time\_locating\_system}}, year={2015}}
+@REPORT{4,author={Clarinox Technologies Pty Ltd.},title={{http://www.clarinox.com/docs/whitepapers/RealTime\_main.pdf}}, year={2009}}
 
 \end{filecontents*}
 
@@ -79,41 +82,10 @@ This paper deals with designing and implementation of an RFID monitoring system 
 
 %beginning sections
 \section{Introduction}
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
+Real-time location systems (RTLS) are used to track and identify the location of objects in real time\cite{3}. Tags are attached to the required objects to be tracked and a reader will read the wireless signals from this tag in order to track its location. The wireless technologies used for the communication between the tag and reader varies. We have Wi-Fi, GPS, Bluetooth and active and passive RFID systems\cite{4}. The coverage of the reader depends on the environment as well as the technology used. Each technology preferred for specific application and has its own pros and cons. There are three techniques used for the calculations to analyze the communication between the reader and the tag, and these are, Distance/Angle estimation, position computation and localization algorithm. Each one is preferred depending on the application.
 
 
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-
-
-
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-
-
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introduction
-Add introductionAdd introduction
+RTLS technology is used in a lot of applications related to warehouses where it improved the efficiency of warehouse operations, supply chain where it can reduces management costs and keep track of items in factories, tracking animals ...etc.
 %%%%%%
 %%%%%%
 \section{Problem}
@@ -355,13 +327,8 @@ The following method is the method that is responsible of sending the read comma
 \end{lstlisting}
 After that the code will write the new data to the database using MS SQL connection string.
 
-\subsubsection{SQL database} The database was implemented in MS SQL. In \figref{sql} it shows the tables and their columns.\\
-\begin{figure}[ht]
-\centering
-\fbox{add the sql SS}
-\caption{MS SQL environment}
-\label{sql}
-\end{figure}
+\subsubsection{SQL database} The database was implemented in MS SQL. The entity diagram can be seen in \figref{entity}\\
+
 \subsubsection{Front-end implementation}
 The front-end was implemented using the ASP.NET webforms technology. This technology minimized the development time and provided a consistent web application with the benefit of flexibility and compatibility with C\# code. The interface developed is shown in \figref{web}.
 \begin{figure}
